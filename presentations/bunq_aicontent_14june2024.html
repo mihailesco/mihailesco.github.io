@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>bunq - Visual AI Content</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+        
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .slide:first-child {
+            border-top: none;
+        }
+        
+        .slide-content {
+            max-width: 1200px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+        
+        h2 {
+            font-size: clamp(2rem, 6vw, 4rem);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        h3 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            opacity: 0.8;
+        }
+        
+        p {
+            font-size: clamp(1rem, 2vw, 1.5rem);
+            line-height: 1.6;
+            opacity: 0.8;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .logo {
+            margin-bottom: 3rem;
+        }
+        
+        .logo img {
+            height: 300px;
+            width: auto;
+            filter: invert(1);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 3rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+        
+        .icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            color: #00ff88;
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            opacity: 0.7;
+            margin-top: 0.5rem;
+        }
+        
+        .visual-element {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, rgba(0, 255, 136, 0.1), rgba(0, 204, 255, 0.1));
+            border-radius: 20px;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .visual-element::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(
+                45deg,
+                transparent,
+                transparent 10px,
+                rgba(255, 255, 255, 0.03) 10px,
+                rgba(255, 255, 255, 0.03) 20px
+            );
+            animation: move 20s linear infinite;
+        }
+        
+        @keyframes move {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
+        }
+        
+        .timeline {
+            position: relative;
+            padding: 3rem 0;
+        }
+        
+        .timeline-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.6s ease forwards;
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+        }
+        
+        .timeline-date {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00ff88;
+            min-width: 150px;
+            text-align: right;
+            padding-right: 2rem;
+        }
+        
+        .timeline-content {
+            flex: 1;
+            text-align: left;
+            padding-left: 2rem;
+            border-left: 2px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .cta-section {
+            margin-top: 4rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .cta-button {
+            background: linear-gradient(135deg, #00ff88, #00ccff);
+            color: #000;
+            padding: 1.5rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 255, 136, 0.3);
+        }
+        
+        .contact-info {
+            margin-top: 2rem;
+            opacity: 0.7;
+        }
+        
+        .footer-logo {
+            margin-top: 4rem;
+            opacity: 0.5;
+        }
+        
+        .footer-logo img {
+            height: 120px;
+            width: auto;
+            filter: invert(1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .timeline-date {
+                text-align: center;
+                padding-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .timeline-content {
+                border-left: none;
+                padding-left: 0;
+                text-align: center;
+            }
+            
+            .stats-container {
+                flex-direction: column;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 1: Title -->
+    <section class="slide">
+        <div class="slide-content">
+            <div class="logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Y_Combinator_logo.svg" alt="Y3K">
+            </div>
+            <h1 class="gradient-text">Visual AI Content for bunq</h1>
+            <p>Transforming banking communication through intelligent visual storytelling</p>
+        </div>
+    </section>
+    
+    <!-- Slide 2: The Challenge -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>The Challenge</h2>
+            <p>In today's fast-paced digital banking landscape, engaging customers with complex financial information requires more than traditional communication methods.</p>
+            <div class="visual-element">
+                <h3 style="opacity: 0.3;">Complex Data Visualization</h3>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 3: Our Solution -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="gradient-text">Our AI-Powered Solution</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="icon">🤖</div>
+                    <h3>Smart Generation</h3>
+                    <p>AI analyzes banking data to create relevant visual narratives automatically</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎨</div>
+                    <h3>Dynamic Visuals</h3>
+                    <p>Real-time generation of infographics, charts, and interactive elements</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon">🎯</div>
+                    <h3>Personalization</h3>
+                    <p>Content tailored to individual user preferences and banking behavior</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 4: Implementation -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Implementation Roadmap</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 1-2</div>
+                    <div class="timeline-content">
+                        <h3>Data Integration</h3>
+                        <p>Connect AI systems with bunq's data infrastructure</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 3-4</div>
+                    <div class="timeline-content">
+                        <h3>AI Training</h3>
+                        <p>Train models on banking communication patterns</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 5-6</div>
+                    <div class="timeline-content">
+                        <h3>Visual Generation</h3>
+                        <p>Deploy automated visual content creation pipeline</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">Week 7-8</div>
+                    <div class="timeline-content">
+                        <h3>Launch & Optimize</h3>
+                        <p>Go live with continuous learning and improvement</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Slide 5: Expected Results -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2>Expected Impact</h2>
+            <div class="stats-container">
+                <div class="stat-item">
+                    <div class="stat-number">3x</div>
+                    <div class="stat-label">Engagement Rate</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45%</div>
+                    <div class="stat-label">Time Saved</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">92%</div>
+                    <div class="stat-label">User Satisfaction</div>
+                </div>
+            </div>
+            <p style="margin-top: 3rem;">Based on preliminary testing and industry benchmarks</p>
+        </div>
+    </section>
+    
+    <!-- Slide 6: Next Steps -->
+    <section class="slide">
+        <div class="slide-content">
+            <h2 class="gradient-text">Let's Create the Future of Banking Communication</h2>
+            <div class="cta-section">
+                <p>Ready to revolutionize how bunq connects with its users?</p>
+                <a href="#" class="cta-button">Schedule a Deep Dive</a>
+                <div class="contact-info">
+                    <p>gabriel@y3k.agency | +31 6 1234 5678</p>
+                </div>
+            </div>
+            <div class="footer-logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Y_Combinator_logo.svg" alt="Y3K">
+            </div>
+        </div>
+    </section>
+</body>
+</html>
