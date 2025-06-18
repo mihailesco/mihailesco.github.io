@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y3K - We Don't Generate. We Shoot with AI.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500&family=Inter:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #000000;
+            color: #FFFFFF;
+            line-height: 1.6;
+            font-weight: 200;
+            overflow-x: hidden;
+        }
+        
+        strong {
+            font-weight: 400;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px;
+        }
+        
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 120px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #333333;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        .partner-info {
+            text-align: right;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+        
+        /* Act 1: The Problem */
+        .act-one {
+            margin-bottom: 120px;
+        }
+        
+        h1 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 400;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 40px;
+        }
+        
+        .problem-list {
+            font-size: 18px;
+            line-height: 2;
+            color: #CCCCCC;
+            max-width: 600px;
+        }
+        
+        /* Act 2: The Paradigm Shift */
+        .act-two {
+            margin: 160px 0;
+        }
+        
+        .solution {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(36px, 6vw, 72px);
+            font-weight: 400;
+            text-align: center;
+            padding: 80px 0;
+            border-top: 1px solid #333333;
+            border-bottom: 1px solid #333333;
+            letter-spacing: -0.02em;
+        }
+        
+        .differentiators {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            font-size: 18px;
+            line-height: 2;
+        }
+        
+        .diff-item {
+            margin-bottom: 20px;
+        }
+        
+        .diff-label {
+            font-weight: 400;
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 80px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 72px;
+            font-weight: 100;
+            line-height: 1;
+            margin-bottom: 16px;
+            color: #F5F500;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            opacity: 0.6;
+        }
+        
+        /* Act 3: The Authority */
+        .act-three {
+            margin: 160px 0;
+        }
+        
+        h2 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(48px, 6vw, 84px);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 60px;
+        }
+        
+        .yellow {
+            color: #F5F500;
+        }
+        
+        .authority-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: start;
+        }
+        
+        .authority-left h3, .authority-right h3 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 60px;
+            color: #F5F500;
+        }
+        
+        .credential {
+            margin-bottom: 48px;
+        }
+        
+        .credential-title {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 12px;
+        }
+        
+        .credential-desc {
+            font-size: 16px;
+            opacity: 0.7;
+            line-height: 1.5;
+        }
+        
+        .principles {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .principles li {
+            padding: 20px 0;
+            border-bottom: 1px solid #333333;
+            font-size: 18px;
+            font-weight: 300;
+        }
+        
+        .principles li:first-child {
+            padding-top: 0;
+        }
+        
+        .principles li:last-child {
+            border-bottom: none;
+        }
+        
+        /* Act 3: The Services */
+        .act-three {
+            margin: 160px 0;
+        }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px;
+        }
+        
+        .service {
+            background: #111111;
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .service-info h3 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+        
+        .service-desc {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+        
+        .service-price {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 24px;
+            font-weight: 200;
+            color: #F5F500;
+            text-align: right;
+        }
+        
+        /* Act 4: The Vision */
+        .act-four {
+            margin: 200px 0 120px;
+            text-align: center;
+        }
+        
+        .vision h2 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(48px, 6vw, 96px);
+            font-weight: 300;
+            line-height: 1;
+            margin-bottom: 80px;
+            letter-spacing: -0.03em;
+        }
+        
+        .vision h2 .subtitle {
+            display: block;
+            font-size: clamp(36px, 5vw, 72px);
+            margin-top: 20px;
+            color: #F5F500;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: transparent;
+            border: 1px solid #F5F500;
+            color: #F5F500;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 300;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            margin-top: 60px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        
+        .cta-button:hover {
+            background: #F5F500;
+            color: #000000;
+            transform: translateY(-2px);
+        }
+        
+        .contact-subtle {
+            font-size: 14px;
+            margin-top: 80px;
+            opacity: 0.5;
+            letter-spacing: 0.05em;
+        }
+        
+        .contact-subtle a {
+            color: #FFFFFF;
+            text-decoration: none;
+        }
+        
+        /* Footer */
+        .footer {
+            margin-top: 120px;
+            padding-top: 40px;
+            border-top: 1px solid #333333;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            opacity: 0.5;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 40px;
+            }
+            
+            .authority-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            h1 {
+                font-size: 48px;
+            }
+            
+            h2 {
+                font-size: 36px;
+            }
+            
+            .solution {
+                font-size: 36px;
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1418.2 429.65">
+                <g>
+                    <polygon fill="#fff" points="339.63 8.05 246.37 175.26 152.59 8.05 0 8.05 174.32 285.84 174.32 420.76 315.79 420.76 315.79 286.37 484.8 8.05 339.63 8.05"/>
+                    <path fill="#fff" d="M914.95,150.27c0,15.17-3.62,27.69-10.86,37.57-7.25,9.88-19.17,17.64-35.76,23.28,16.6,6.35,28.52,14.73,35.76,25.13,7.24,10.41,10.86,23.37,10.86,38.89v52.91c0,22.23-6.89,40.57-20.67,55.03-13.78,14.46-37.71,25.84-71.79,34.13-34.09,8.29-78.86,12.44-134.31,12.44-41.33,0-77-2.83-107.03-8.47-30.02-5.64-53.61-13.58-70.74-23.81-17.14-10.23-29.59-21.69-37.35-34.39-7.77-12.7-11.66-27.16-11.66-43.39v-28.58h138.82v27.52c0,10.93,6.53,19.4,19.6,25.4,13.07,6,35.85,8.99,68.35,8.99s55.28-2.73,68.35-8.2c13.06-5.47,19.6-13.49,19.6-24.08v-49.21c0-7.41-2.83-13.13-8.48-17.19-5.65-4.06-17.22-7.32-34.7-9.79-17.49-2.47-42.48-3.71-74.97-3.71v-62.96c32.49,0,57.48-1.23,74.97-3.7,17.48-2.46,29.05-5.73,34.7-9.78,5.65-4.06,8.48-9.79,8.48-17.2v-40.21c0-10.58-6.54-18.6-19.6-24.08-13.07-5.47-35.86-8.2-68.35-8.2s-55.28,3-68.35,8.99c-13.07,6-19.6,14.28-19.6,24.87v28.04h-138.82v-28.57C461.4,35.98,536.99,0,688.18,0c41.68,0,77.35,2.39,107.03,7.15,29.67,4.77,53.15,11.74,70.46,20.91,17.31,9.17,29.85,20.02,37.62,32.54,7.77,12.52,11.66,26.9,11.66,43.12v46.56Z"/>
+                    <polygon fill="#fff" points="1418.2 8.05 1218.45 198.54 1418.2 420.76 1253.42 420.76 1078.05 221.29 1078.05 420.76 936.58 420.76 936.58 8.05 1078.05 8.05 1078.05 178.96 1253.42 8.05 1418.2 8.05"/>
+                </g>
+            </svg>
+            <div class="partner-info">
+                PARTNER EXCLUSIVO<br>
+                VICTORY GAMES
+            </div>
+        </div>
+
+        <!-- Act 1: The Problem -->
+        <section class="act-one">
+            <h1>Every second, 500 hours<br>of content get uploaded.</h1>
+            <h1 style="color: #F5F500; margin-top: -20px;">Your €100k commercial<br>is already invisible.</h1>
+            
+            <div class="problem-list">
+                The real problems:<br>
+                → Content lives for 0.3 seconds<br>
+                → Culture moves in hours, production takes months<br>
+                → One €100k shot vs unlimited variations<br>
+                → By launch, the moment's gone
+            </div>
+        </section>
+
+        <!-- Act 2: The Paradigm Shift -->
+        <section class="act-two">
+            <div class="solution">
+                We Don't Generate.<br>
+                <span class="yellow">We Shoot with AI.</span>
+            </div>
+            
+            <h3 style="font-size: 32px; font-weight: 300; margin: 80px 0 60px 0; text-align: center;">Why Y3K is Different</h3>
+            
+            <div class="differentiators">
+                <div class="diff-item">
+                    <span class="diff-label">→ Since 2023:</span> First AI campaign in Europe
+                </div>
+                <div class="diff-item">
+                    <span class="diff-label">→ Award-Winning Background:</span> 15 years creating for premium brands
+                </div>
+                <div class="diff-item">
+                    <span class="diff-label">→ Proprietary Pipeline:</span> We built tools others don't know exist
+                </div>
+                <div class="diff-item">
+                    <span class="diff-label">→ Directors First:</span> We think in shots, not prompts
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div>
+                    <div class="stat-number">70%</div>
+                    <div class="stat-label">Less Cost</div>
+                </div>
+                <div>
+                    <div class="stat-number">20x</div>
+                    <div class="stat-label">Faster</div>
+                </div>
+                <div>
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Weather-Perfect</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Act 3: The Services -->
+        <section class="act-three">
+            <h2>Pick your <span class="yellow">speed</span></h2>
+            
+            <div class="services-grid">
+                <div class="service">
+                    <div class="service-info">
+                        <h3>Video Commercial</h3>
+                        <div class="service-desc">30-60 second spots. All formats.</div>
+                    </div>
+                    <div class="service-price">
+                        starting €8,000
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <div class="service-info">
+                        <h3>Brand Video</h3>
+                        <div class="service-desc">Your story. Multiple languages.</div>
+                    </div>
+                    <div class="service-price">
+                        starting €12,000
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <div class="service-info">
+                        <h3>Social Package</h3>
+                        <div class="service-desc">Content that moves culture.</div>
+                    </div>
+                    <div class="service-price">
+                        starting €5,000
+                    </div>
+                </div>
+                
+                <div class="service">
+                    <div class="service-info">
+                        <h3>AI Photography</h3>
+                        <div class="service-desc">Perfect shots. Every time.</div>
+                    </div>
+                    <div class="service-price">
+                        starting €3,000
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Act 4: The Vision -->
+        <section class="act-four vision">
+            <h2>This is how brands win now.
+            <span class="subtitle">Cinema at the speed of culture.</span></h2>
+            
+            <a href="https://pitch.com/v/wearey3k2025-6phw2p" target="_blank" class="cta-button">View Portfolio</a>
+            
+            <div class="contact-subtle">
+                Contact: Omar Romero · Victory Games<br>
+                <a href="mailto:omar@thevictory.games">omar@thevictory.games</a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <div class="footer">
+            <span>Y3K AMSTERDAM</span>
+            <span>WE DON'T GENERATE. WE SHOOT WITH AI.</span>
+        </div>
+    </div>
+</body>
+</html>
