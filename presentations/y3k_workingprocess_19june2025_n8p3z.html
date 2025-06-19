@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y3K Working Process</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=IBM+Plex+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --y3k-black: #000000;
+            --y3k-white: #FFFFFF;
+            --y3k-yellow: #F5F500;
+            --y3k-gray-100: #111111;
+            --y3k-gray-200: #1a1a1a;
+            --y3k-gray-300: #333333;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--y3k-black);
+            color: var(--y3k-white);
+            line-height: 1.6;
+            font-weight: 200;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 80px 40px;
+        }
+        
+        h1 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 72px;
+            font-weight: 200;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 80px;
+        }
+        
+        h2 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 48px;
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 48px;
+        }
+        
+        h3 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 24px;
+        }
+        
+        .text-yellow { color: var(--y3k-yellow); }
+        
+        .intro {
+            font-size: 24px;
+            font-weight: 200;
+            margin-bottom: 80px;
+            opacity: 0.8;
+            max-width: 800px;
+        }
+        
+        .process-section {
+            margin-bottom: 120px;
+        }
+        
+        .stage {
+            background: var(--y3k-gray-100);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .stage-number {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            background: var(--y3k-yellow);
+            color: var(--y3k-black);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 24px;
+        }
+        
+        .stage h3 {
+            color: var(--y3k-yellow);
+            margin-bottom: 16px;
+            font-size: 32px;
+        }
+        
+        .stage-duration {
+            font-size: 18px;
+            opacity: 0.6;
+            margin-bottom: 32px;
+        }
+        
+        .deliverables {
+            margin-top: 32px;
+        }
+        
+        .deliverable-item {
+            position: relative;
+            padding-left: 32px;
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+        
+        .deliverable-item:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--y3k-yellow);
+        }
+        
+        .timeline {
+            margin: 80px 0;
+            padding: 60px 0;
+            border-top: 1px solid var(--y3k-gray-300);
+            border-bottom: 1px solid var(--y3k-gray-300);
+        }
+        
+        .timeline-bar {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 60px;
+        }
+        
+        .timeline-segment {
+            height: 16px;
+            background: var(--y3k-yellow);
+            border-radius: 8px;
+            position: relative;
+        }
+        
+        .timeline-segment.week-1 { flex: 1; }
+        .timeline-segment.week-2-3 { flex: 2; }
+        .timeline-segment.week-4-5 { flex: 2; }
+        .timeline-segment.week-6 { flex: 1; }
+        
+        .timeline-label {
+            position: absolute;
+            top: 32px;
+            left: 0;
+            font-size: 14px;
+            white-space: nowrap;
+        }
+        
+        .timeline-label span {
+            display: block;
+            font-weight: 400;
+            color: var(--y3k-yellow);
+            margin-top: 4px;
+        }
+        
+        .formats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin-top: 32px;
+        }
+        
+        .format-box {
+            background: var(--y3k-gray-200);
+            padding: 24px;
+            border-radius: 16px;
+            text-align: center;
+        }
+        
+        .format-box h4 {
+            color: var(--y3k-yellow);
+            margin-bottom: 8px;
+        }
+        
+        .sign-off {
+            background: var(--y3k-yellow);
+            color: var(--y3k-black);
+            padding: 8px 24px;
+            border-radius: 20px;
+            display: inline-block;
+            font-weight: 400;
+            margin-top: 24px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 48px; }
+            h2 { font-size: 36px; }
+            .stage { padding: 32px; }
+            .formats-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Y3K Working<br><span class="text-yellow">Process</span></h1>
+        
+        <p class="intro">
+            From concept to delivery, our AI-powered production pipeline delivers Hollywood-grade content at unprecedented speed. Each stage is crafted for maximum efficiency without compromising creative excellence.
+        </p>
+        
+        <div class="process-section">
+            <div class="stage">
+                <div class="stage-number">I</div>
+                <h3>Creative</h3>
+                <div class="stage-duration">Week 1</div>
+                <p>Where vision meets strategy. We dive deep into your brand essence to craft the perfect narrative.</p>
+                
+                <div class="deliverables">
+                    <div class="deliverable-item"><strong>Concept Development</strong> – Direction, core idea, and mood exploration</div>
+                    <div class="deliverable-item"><strong>Script Development</strong> – Crafting narratives that resonate with your audience</div>
+                    <div class="deliverable-item"><strong>Creative Strategy</strong> – Aligning vision with business objectives</div>
+                </div>
+                <div class="sign-off">Client Sign-Off</div>
+            </div>
+            
+            <div class="stage">
+                <div class="stage-number">II</div>
+                <h3>Pre-Production</h3>
+                <div class="stage-duration">Week 2-3</div>
+                <p>Transforming concepts into cinematic blueprints. Every shot planned, every detail considered.</p>
+                
+                <div class="deliverables">
+                    <div class="deliverable-item"><strong>Director's Treatment</strong> – Complete visual bible including:</div>
+                    <div style="padding-left: 32px; margin: 16px 0;">
+                        • Character profiles & casting direction<br>
+                        • Location scouting & environment design<br>
+                        • Styling guides & wardrobe<br>
+                        • Mood boards & color palette<br>
+                        • Music & sound references
+                    </div>
+                    <div class="deliverable-item"><strong>Shot Lists</strong> – Comprehensive scene-by-scene breakdowns</div>
+                    <div class="deliverable-item"><strong>AI Production Deck</strong> – Technical specifications for generation</div>
+                </div>
+                <div class="sign-off">Creative Sign-Off</div>
+            </div>
+            
+            <div class="stage">
+                <div class="stage-number">III</div>
+                <h3>Production</h3>
+                <div class="stage-duration">Week 4-5</div>
+                <p>Where AI meets artistry. Generating cinema-quality scenes with precision and purpose.</p>
+                
+                <div class="deliverables">
+                    <div class="deliverable-item"><strong>Key Scene Generation</strong> – AI-powered creation based on production deck</div>
+                    <div class="deliverable-item"><strong>First Edit Assembly</strong> – Multiple cuts optimized for different platforms</div>
+                    <div class="deliverable-item"><strong>Review & Refinement</strong> – Real-time adjustments and iterations</div>
+                    <div class="deliverable-item"><strong>Quality Control</strong> – Frame-by-frame perfection</div>
+                </div>
+                <div class="sign-off">Production Sign-Off</div>
+            </div>
+            
+            <div class="stage">
+                <div class="stage-number">IV</div>
+                <h3>Post-Production</h3>
+                <div class="stage-duration">Week 6</div>
+                <p>The final polish. Where good becomes exceptional through meticulous attention to detail.</p>
+                
+                <div class="deliverables">
+                    <div class="deliverable-item"><strong>Color Grading</strong> – Cinema-grade color science</div>
+                    <div class="deliverable-item"><strong>Sound Design</strong> – Professional mixing and mastering</div>
+                    <div class="deliverable-item"><strong>VFX Integration</strong> – Custom visual effects and motion graphics</div>
+                    <div class="deliverable-item"><strong>Format Optimization</strong> – Multiple variations across all platforms</div>
+                </div>
+                
+                <div class="formats-grid">
+                    <div class="format-box">
+                        <h4>Social</h4>
+                        <p>9:16, 1:1, 4:5</p>
+                    </div>
+                    <div class="format-box">
+                        <h4>Web</h4>
+                        <p>16:9, 21:9</p>
+                    </div>
+                    <div class="format-box">
+                        <h4>Display</h4>
+                        <p>Various sizes</p>
+                    </div>
+                    <div class="format-box">
+                        <h4>Localized</h4>
+                        <p>Multi-language</p>
+                    </div>
+                </div>
+                
+                <div class="sign-off">Final Delivery</div>
+            </div>
+        </div>
+        
+        <div class="timeline">
+            <h2>Project <span class="text-yellow">Timeline</span></h2>
+            
+            <div class="timeline-bar">
+                <div class="timeline-segment week-1">
+                    <div class="timeline-label">
+                        Week 1
+                        <span>Creative</span>
+                    </div>
+                </div>
+                <div class="timeline-segment week-2-3">
+                    <div class="timeline-label">
+                        Week 2-3
+                        <span>Pre-Production</span>
+                    </div>
+                </div>
+                <div class="timeline-segment week-4-5">
+                    <div class="timeline-label">
+                        Week 4-5
+                        <span>Production</span>
+                    </div>
+                </div>
+                <div class="timeline-segment week-6">
+                    <div class="timeline-label">
+                        Week 6
+                        <span>Post-Production</span>
+                    </div>
+                </div>
+            </div>
+            
+            <p style="text-align: center; font-size: 20px; opacity: 0.8;">
+                From concept to complete campaign in 6 weeks. <span class="text-yellow">That's the Y3K difference.</span>
+            </p>
+        </div>
+    </div>
+</body>
+</html>
