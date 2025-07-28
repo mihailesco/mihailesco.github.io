@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y3K × Panio Proposal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@100;200;300;400;500;600&family=Inter:wght@100;200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --y3k-black: #000000;
+            --y3k-white: #FFFFFF;
+            --y3k-yellow: #F5F500;
+            --y3k-gray-100: #111111;
+            --y3k-gray-200: #1a1a1a;
+            --y3k-gray-300: #333333;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            background: var(--y3k-black);
+            color: var(--y3k-white);
+            line-height: 1.6;
+            font-weight: 200;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .slide {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            position: relative;
+            border-bottom: 1px solid var(--y3k-gray-300);
+        }
+
+        .slide-header {
+            position: absolute;
+            top: 40px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .slide-footer {
+            position: absolute;
+            bottom: 40px;
+            left: 80px;
+            right: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .label {
+            font-size: 11px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.5;
+        }
+
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 200;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(36px, 5vw, 72px);
+            font-weight: 300;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+        }
+
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(24px, 3vw, 32px);
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 24px;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: 200;
+            line-height: 1.6;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .text-yellow { color: var(--y3k-yellow); }
+
+        .content {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .content.left-align {
+            align-items: flex-start;
+        }
+
+        .quote {
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 300;
+            line-height: 1.2;
+            font-style: italic;
+            margin: 48px auto;
+            text-align: center;
+        }
+
+        .process-timeline {
+            background: var(--y3k-gray-100);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .process-week {
+            margin-bottom: 32px;
+        }
+
+        .process-week:last-child {
+            margin-bottom: 0;
+        }
+
+        .process-week h4 {
+            color: var(--y3k-yellow);
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        .process-item {
+            padding: 8px 0;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .process-item:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--y3k-yellow);
+        }
+
+        .deliverables-grid {
+            display: grid;
+            gap: 24px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .deliverable-item {
+            background: var(--y3k-gray-100);
+            border-radius: 16px;
+            padding: 32px;
+            transition: all 0.3s ease;
+        }
+
+        .deliverable-item:hover {
+            background: var(--y3k-gray-200);
+            transform: translateY(-2px);
+        }
+
+        .pricing-box {
+            background: var(--y3k-gray-100);
+            border-radius: 24px;
+            padding: 48px;
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: center;
+            border: 1px solid var(--y3k-gray-300);
+        }
+
+        .pricing-box:hover {
+            border-color: var(--y3k-yellow);
+        }
+
+        .price-strike {
+            text-decoration: line-through;
+            opacity: 0.5;
+            font-size: 36px;
+        }
+
+        .price-main {
+            font-size: 72px;
+            font-weight: 100;
+            color: var(--y3k-yellow);
+            margin: 24px 0;
+        }
+
+        .price-terms {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-top: 32px;
+        }
+
+        .price-terms-item {
+            padding: 8px 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 12px 0;
+            padding-left: 32px;
+            position: relative;
+            font-size: 18px;
+        }
+
+        li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--y3k-yellow);
+            font-size: 24px;
+        }
+
+        .stakes-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            margin: 48px 0;
+            width: 100%;
+        }
+
+        .stake-item {
+            text-align: center;
+        }
+
+        .stake-time {
+            font-size: 48px;
+            color: var(--y3k-yellow);
+            font-weight: 100;
+            margin-bottom: 8px;
+        }
+
+        .stake-audience {
+            font-size: 20px;
+            font-weight: 400;
+            margin-bottom: 8px;
+        }
+
+        .stake-action {
+            font-size: 16px;
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 48px;
+        }
+
+        .contact-info p {
+            margin: 8px 0;
+        }
+
+        .contact-info a {
+            color: var(--y3k-yellow);
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        strong {
+            font-weight: 400;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px;
+            }
+            
+            .slide-header,
+            .slide-footer {
+                left: 40px;
+                right: 40px;
+            }
+
+            .stakes-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            h1 {
+                font-size: 48px;
+            }
+
+            h2 {
+                font-size: 36px;
+            }
+
+            .price-main {
+                font-size: 48px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Slide 0: Y3K Logo -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">NEW MEDIA</span>
+        </div>
+        
+        <div class="content">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1418.2 429.65" style="height: 300px; width: auto; max-width: 800px;">
+                <g>
+                    <polygon fill="#fff" points="339.63 8.05 246.37 175.26 152.59 8.05 0 8.05 174.32 285.84 174.32 420.76 315.79 420.76 315.79 286.37 484.8 8.05 339.63 8.05"/>
+                    <path fill="#fff" d="M914.95,150.27c0,15.17-3.62,27.69-10.86,37.57-7.25,9.88-19.17,17.64-35.76,23.28,16.6,6.35,28.52,14.73,35.76,25.13,7.24,10.41,10.86,23.37,10.86,38.89v52.91c0,22.23-6.89,40.57-20.67,55.03-13.78,14.46-37.71,25.84-71.79,34.13-34.09,8.29-78.86,12.44-134.31,12.44-41.33,0-77-2.83-107.03-8.47-30.02-5.64-53.61-13.58-70.74-23.81-17.14-10.23-29.59-21.69-37.35-34.39-7.77-12.7-11.66-27.16-11.66-43.39v-28.58h138.82v27.52c0,10.93,6.53,19.4,19.6,25.4,13.07,6,35.85,8.99,68.35,8.99s55.28-2.73,68.35-8.2c13.06-5.47,19.6-13.49,19.6-24.08v-49.21c0-7.41-2.83-13.13-8.48-17.19-5.65-4.06-17.22-7.32-34.7-9.79-17.49-2.47-42.48-3.71-74.97-3.71v-62.96c32.49,0,57.48-1.23,74.97-3.7,17.48-2.46,29.05-5.73,34.7-9.78,5.65-4.06,8.48-9.79,8.48-17.2v-40.21c0-10.58-6.54-18.6-19.6-24.08-13.07-5.47-35.86-8.2-68.35-8.2s-55.28,3-68.35,8.99c-13.07,6-19.6,14.28-19.6,24.87v28.04h-138.82v-28.57C461.4,35.98,536.99,0,688.18,0c41.68,0,77.35,2.39,107.03,7.15,29.67,4.77,53.15,11.74,70.46,20.91,17.31,9.17,29.85,20.02,37.62,32.54,7.77,12.52,11.66,26.9,11.66,43.12v46.56Z"/>
+                    <polygon fill="#fff" points="1418.2 8.05 1218.45 198.54 1418.2 420.76 1253.42 420.76 1078.05 221.29 1078.05 420.76 936.58 420.76 936.58 8.05 1078.05 8.05 1078.05 178.96 1253.42 8.05 1418.2 8.05"/>
+                </g>
+            </svg>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">@2025</span>
+            <span class="label">STARTUP FILM</span>
+        </div>
+    </section>
+
+    <!-- Slide 1: Hook -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">STARTUP FILM</span>
+        </div>
+        
+        <div class="content">
+            <h1 style="font-size: clamp(64px, 8vw, 120px); margin-bottom: 48px;">
+                "Your Canine<br>
+                Longevity<br>
+                <span class="text-yellow">Companion"</span>
+            </h1>
+            <p style="font-size: 32px; font-weight: 300; opacity: 0.8; text-align: center;">
+                The story that launches a movement.
+            </p>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">PANIO × Y3K</span>
+            <span class="label">2025</span>
+        </div>
+    </section>
+
+    <!-- Slide 2: The Stakes -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">THE STAKES</span>
+            <span class="label">01</span>
+        </div>
+        
+        <div class="content">
+            <h2 style="text-align: center;">Every startup gets <span class="text-yellow">ONE shot</span><br>at a first impression</h2>
+            
+            <div class="stakes-grid">
+                <div class="stake-item">
+                    <div class="stake-time">30s</div>
+                    <div class="stake-audience">Investors</div>
+                    <div class="stake-action">to see your vision</div>
+                </div>
+                <div class="stake-item">
+                    <div class="stake-time">15s</div>
+                    <div class="stake-audience">Early Adopters</div>
+                    <div class="stake-action">to believe in your mission</div>
+                </div>
+                <div class="stake-item">
+                    <div class="stake-time">45s</div>
+                    <div class="stake-audience">Partners</div>
+                    <div class="stake-action">to join your revolution</div>
+                </div>
+            </div>
+            
+            <p class="quote">Your launch video is more than marketing.<br>
+            It's your company's <span class="text-yellow">trajectory</span>.</p>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">PANIO</span>
+        </div>
+    </section>
+
+    <!-- Slide 3: The Y3K Difference -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">THE DIFFERENCE</span>
+            <span class="label">02</span>
+        </div>
+        
+        <div class="content">
+            <h2 style="margin-bottom: 48px; text-align: center;">We Don't Generate.<br><span class="text-yellow">We Shoot with AI.</span></h2>
+            
+            <div class="deliverables-grid" style="grid-template-columns: repeat(3, 1fr); max-width: 900px;">
+                <div class="deliverable-item">
+                    <h3 style="color: var(--y3k-yellow); font-size: 24px; margin-bottom: 16px; text-align: center;">Directors First</h3>
+                    <p style="text-align: center;">Award-winning background, now directing AI</p>
+                </div>
+                <div class="deliverable-item">
+                    <h3 style="color: var(--y3k-yellow); font-size: 24px; margin-bottom: 16px; text-align: center;">Speed</h3>
+                    <p style="text-align: center;">2 weeks vs 2 months</p>
+                </div>
+                <div class="deliverable-item">
+                    <h3 style="color: var(--y3k-yellow); font-size: 24px; margin-bottom: 16px; text-align: center;">Quality</h3>
+                    <p style="text-align: center;">Cinema-grade output</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">PANIO</span>
+        </div>
+    </section>
+
+    <!-- Slide 4: Our Process -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">THE PROCESS</span>
+            <span class="label">03</span>
+        </div>
+        
+        <div class="content left-align">
+            <h2>Our <span class="text-yellow">Process</span></h2>
+            
+            <div class="process-timeline">
+                <div class="process-week">
+                    <h4>Week 1: Foundation</h4>
+                    <div class="process-item">Creative Kickoff (1hr)</div>
+                    <div class="process-item">Brand DNA Discovery</div>
+                    <div class="process-item">Visual Language Definition</div>
+                </div>
+                
+                <div class="process-week">
+                    <h4>Week 2: Creation</h4>
+                    <div class="process-item">Creative Treatment</div>
+                    <div class="process-item">Script</div>
+                    <div class="process-item">Keyframes</div>
+                </div>
+                
+                <div class="process-week">
+                    <h4>Week 3: Delivery</h4>
+                    <div class="process-item">1st Edit</div>
+                    <div class="process-item">Format Optimization</div>
+                    <div class="process-item">Launch Package</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">PANIO</span>
+        </div>
+    </section>
+
+    <!-- Slide 5: What You Get -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">DELIVERABLES</span>
+            <span class="label">04</span>
+        </div>
+        
+        <div class="content left-align">
+            <h2>What You <span class="text-yellow">Get</span></h2>
+            
+            <div class="deliverables-grid">
+                <div class="deliverable-item">
+                    <h3>Hero Film</h3>
+                    <p style="font-size: 24px; color: var(--y3k-yellow);">45 seconds brand intro film</p>
+                </div>
+                
+                <div class="deliverable-item">
+                    <h3>Every Format</h3>
+                    <p style="font-size: 24px;">16:9, 9:16, 1:1 included</p>
+                </div>
+                
+                <div class="deliverable-item">
+                    <h3>Creative Process</h3>
+                    <p style="font-size: 24px;">1 feedback round + 1 refinement round</p>
+                </div>
+                
+                <div class="deliverable-item">
+                    <h3>Brand DNA</h3>
+                    <p style="font-size: 24px;">Your visual language captured forever</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">PANIO</span>
+        </div>
+    </section>
+
+    <!-- Slide 6: Investment -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">INVESTMENT</span>
+            <span class="label">05</span>
+        </div>
+        
+        <div class="content">
+            <h2 style="text-align: center;">Startup <span class="text-yellow">Package</span></h2>
+            
+            <div class="pricing-box">
+                <div class="price-strike">€8,500</div>
+                <div style="text-decoration: line-through; font-size: 48px; opacity: 0.6;">€6,000</div>
+                <div class="price-main">€2,500</div>
+                <p style="font-size: 20px; color: var(--y3k-yellow); margin-bottom: 32px;">70% pioneer discount</p>
+                
+                <div class="price-terms">
+                    <div class="price-terms-item">"Created by Y3K, Shot with AI"<br>included with marketing materials</div>
+                </div>
+                
+                <p style="margin-top: 48px; font-size: 24px; font-style: italic;">
+                    "We believe in your mission.<br>Let's grow together."
+                </p>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">PANIO</span>
+        </div>
+    </section>
+
+    <!-- Slide 7: Let's Start -->
+    <section class="slide">
+        <div class="slide-header">
+            <span class="label">LET'S START</span>
+            <span class="label">06</span>
+        </div>
+        
+        <div class="content">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1418.2 429.65" style="height: 120px; margin-bottom: 60px;">
+                <g>
+                    <polygon fill="#fff" points="339.63 8.05 246.37 175.26 152.59 8.05 0 8.05 174.32 285.84 174.32 420.76 315.79 420.76 315.79 286.37 484.8 8.05 339.63 8.05"/>
+                    <path fill="#fff" d="M914.95,150.27c0,15.17-3.62,27.69-10.86,37.57-7.25,9.88-19.17,17.64-35.76,23.28,16.6,6.35,28.52,14.73,35.76,25.13,7.24,10.41,10.86,23.37,10.86,38.89v52.91c0,22.23-6.89,40.57-20.67,55.03-13.78,14.46-37.71,25.84-71.79,34.13-34.09,8.29-78.86,12.44-134.31,12.44-41.33,0-77-2.83-107.03-8.47-30.02-5.64-53.61-13.58-70.74-23.81-17.14-10.23-29.59-21.69-37.35-34.39-7.77-12.7-11.66-27.16-11.66-43.39v-28.58h138.82v27.52c0,10.93,6.53,19.4,19.6,25.4,13.07,6,35.85,8.99,68.35,8.99s55.28-2.73,68.35-8.2c13.06-5.47,19.6-13.49,19.6-24.08v-49.21c0-7.41-2.83-13.13-8.48-17.19-5.65-4.06-17.22-7.32-34.7-9.79-17.49-2.47-42.48-3.71-74.97-3.71v-62.96c32.49,0,57.48-1.23,74.97-3.7,17.48-2.46,29.05-5.73,34.7-9.78,5.65-4.06,8.48-9.79,8.48-17.2v-40.21c0-10.58-6.54-18.6-19.6-24.08-13.07-5.47-35.86-8.2-68.35-8.2s-55.28,3-68.35,8.99c-13.07,6-19.6,14.28-19.6,24.87v28.04h-138.82v-28.57C461.4,35.98,536.99,0,688.18,0c41.68,0,77.35,2.39,107.03,7.15,29.67,4.77,53.15,11.74,70.46,20.91,17.31,9.17,29.85,20.02,37.62,32.54,7.77,12.52,11.66,26.9,11.66,43.12v46.56Z"/>
+                    <polygon fill="#fff" points="1418.2 8.05 1218.45 198.54 1418.2 420.76 1253.42 420.76 1078.05 221.29 1078.05 420.76 936.58 420.76 936.58 8.05 1078.05 8.05 1078.05 178.96 1253.42 8.05 1418.2 8.05"/>
+                </g>
+            </svg>
+            
+            <h2 style="margin-bottom: 48px; text-align: center;">Let's extend life.<br><span class="text-yellow">Together.</span></h2>
+            
+            <div class="contact-info">
+                <p style="font-size: 24px; font-weight: 300;">Gabriel Mihailesco</p>
+                <p style="font-size: 20px;">
+                    <a href="mailto:gabriel@y3k.agency">gabriel@y3k.agency</a><br>
+                    +31 6 11 61 57 88
+                </p>
+            </div>
+        </div>
+        
+        <div class="slide-footer">
+            <span class="label">Y3K AGENCY</span>
+            <span class="label">NEW MEDIA</span>
+        </div>
+    </section>
+</body>
+</html>
