@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panio × Y3K Production Timeline</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600&family=IBM+Plex+Sans:wght@100;200;300;400&display=swap" rel="stylesheet">
+    <style>
+        /* Y3K Design System */
+        :root {
+            --y3k-black: #000000;
+            --y3k-white: #FFFFFF;
+            --y3k-yellow: #F5F500;
+            --y3k-gray-100: #111111;
+            --y3k-gray-200: #1a1a1a;
+            --y3k-gray-300: #333333;
+            --y3k-gray-400: #666666;
+            --y3k-gray-500: #999999;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        @media print {
+            body {
+                -webkit-print-color-adjust: exact;
+                print-color-adjust: exact;
+            }
+            .page {
+                page-break-after: always;
+            }
+            .no-print {
+                display: none;
+            }
+        }
+        
+        body {
+            font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--y3k-black);
+            color: var(--y3k-white);
+            line-height: 1.6;
+            font-weight: 200;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 0 auto;
+            background: var(--y3k-black);
+            position: relative;
+        }
+        
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 60px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--y3k-gray-300);
+        }
+        
+        .logo-section {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
+        }
+        
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 600;
+            color: var(--y3k-white);
+        }
+        
+        .logo-x {
+            font-size: 24px;
+            font-weight: 200;
+            color: var(--y3k-gray-400);
+        }
+        
+        .logo-partner {
+            font-family: 'Inter', sans-serif;
+            font-size: 32px;
+            font-weight: 200;
+            color: var(--y3k-yellow);
+        }
+        
+        .tagline {
+            font-size: 11px;
+            color: var(--y3k-gray-500);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 300;
+        }
+        
+        /* Typography */
+        h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: 72px;
+            font-weight: 200;
+            line-height: 0.9;
+            letter-spacing: -0.03em;
+            margin-bottom: 20px;
+        }
+        
+        .subtitle {
+            font-size: 24px;
+            font-weight: 200;
+            color: var(--y3k-gray-400);
+            margin-bottom: 60px;
+        }
+        
+        h2 {
+            font-family: 'Inter', sans-serif;
+            font-size: 36px;
+            font-weight: 300;
+            color: var(--y3k-yellow);
+            margin: 60px 0 30px;
+            letter-spacing: -0.02em;
+        }
+        
+        h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--y3k-white);
+            margin-bottom: 20px;
+        }
+        
+        /* Overview Card */
+        .overview-card {
+            background: var(--y3k-gray-100);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid var(--y3k-gray-300);
+        }
+        
+        .overview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .overview-item {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .overview-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--y3k-gray-500);
+            font-weight: 300;
+        }
+        
+        .overview-value {
+            font-size: 20px;
+            color: var(--y3k-white);
+            font-weight: 300;
+        }
+        
+        .overview-value.highlight {
+            color: var(--y3k-yellow);
+        }
+        
+        /* Timeline */
+        .timeline-container {
+            margin: 40px 0;
+        }
+        
+        .week-card {
+            background: var(--y3k-gray-100);
+            border-radius: 24px;
+            padding: 32px;
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+        
+        .week-card:hover {
+            background: var(--y3k-gray-200);
+            transform: translateY(-2px);
+        }
+        
+        .week-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+        }
+        
+        .week-number {
+            background: var(--y3k-yellow);
+            color: var(--y3k-black);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        
+        .week-title {
+            font-size: 24px;
+            font-weight: 300;
+            flex: 1;
+            margin-left: 20px;
+        }
+        
+        .week-dates {
+            font-size: 14px;
+            color: var(--y3k-gray-400);
+            font-weight: 200;
+        }
+        
+        /* Milestones */
+        .milestone {
+            background: var(--y3k-black);
+            border: 1px solid var(--y3k-gray-300);
+            border-radius: 16px;
+            padding: 24px;
+            margin: 16px 0;
+        }
+        
+        .milestone-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 16px;
+        }
+        
+        .milestone-date {
+            color: var(--y3k-yellow);
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .milestone-title {
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--y3k-white);
+        }
+        
+        .deliverables {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .deliverables li {
+            padding: 8px 0 8px 24px;
+            position: relative;
+            font-size: 14px;
+            color: var(--y3k-gray-400);
+            font-weight: 200;
+        }
+        
+        .deliverables li:before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--y3k-yellow);
+        }
+        
+        /* Assets Grid */
+        .assets-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+        }
+        
+        .asset-card {
+            background: var(--y3k-gray-100);
+            border-radius: 24px;
+            padding: 32px;
+            border: 1px solid var(--y3k-gray-300);
+        }
+        
+        .asset-card h4 {
+            font-size: 18px;
+            font-weight: 400;
+            color: var(--y3k-yellow);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .asset-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .asset-list li {
+            padding: 8px 0 8px 20px;
+            position: relative;
+            font-size: 14px;
+            font-weight: 200;
+        }
+        
+        .asset-list li:before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--y3k-yellow);
+        }
+        
+        /* Table */
+        .timeline-table {
+            width: 100%;
+            margin: 40px 0;
+            border-collapse: separate;
+            border-spacing: 0;
+            overflow: hidden;
+            border-radius: 16px;
+            background: var(--y3k-gray-100);
+        }
+        
+        .timeline-table th {
+            background: var(--y3k-gray-200);
+            color: var(--y3k-yellow);
+            padding: 16px 24px;
+            text-align: left;
+            font-size: 12px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            border-bottom: 1px solid var(--y3k-gray-300);
+        }
+        
+        .timeline-table td {
+            padding: 20px 24px;
+            font-size: 14px;
+            font-weight: 200;
+            border-bottom: 1px solid var(--y3k-gray-200);
+        }
+        
+        .timeline-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .timeline-table tr:hover {
+            background: var(--y3k-gray-200);
+        }
+        
+        .date-highlight {
+            color: var(--y3k-yellow);
+            font-weight: 400;
+        }
+        
+        /* Requirements Box */
+        .requirements-box {
+            background: var(--y3k-gray-100);
+            border-radius: 24px;
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 4px solid var(--y3k-yellow);
+        }
+        
+        .requirements-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .requirements-list li {
+            padding: 12px 0 12px 30px;
+            position: relative;
+            font-size: 16px;
+            font-weight: 200;
+        }
+        
+        .requirements-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--y3k-yellow);
+            font-size: 20px;
+        }
+        
+        /* Commitment Section */
+        .commitment-section {
+            background: linear-gradient(135deg, var(--y3k-gray-100) 0%, var(--y3k-gray-200) 100%);
+            border-radius: 24px;
+            padding: 48px;
+            margin: 60px 0;
+            border: 1px solid var(--y3k-yellow);
+        }
+        
+        .commitment-section h3 {
+            color: var(--y3k-yellow);
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
+        
+        .commitment-section p {
+            font-size: 18px;
+            font-weight: 200;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+        
+        .commitment-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .commitment-list li {
+            padding: 12px 0;
+            font-size: 16px;
+            font-weight: 200;
+        }
+        
+        .commitment-list strong {
+            color: var(--y3k-yellow);
+            font-weight: 400;
+        }
+        
+        /* Contact Footer */
+        .contact-footer {
+            text-align: center;
+            padding: 60px 0;
+            border-top: 1px solid var(--y3k-gray-300);
+            margin-top: 80px;
+        }
+        
+        .contact-footer h3 {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--y3k-gray-500);
+            margin-bottom: 24px;
+            font-weight: 300;
+        }
+        
+        .contact-name {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 8px;
+        }
+        
+        .contact-title {
+            font-size: 16px;
+            color: var(--y3k-gray-400);
+            margin-bottom: 24px;
+            font-weight: 200;
+        }
+        
+        .contact-info {
+            font-size: 16px;
+            margin: 8px 0;
+            font-weight: 200;
+        }
+        
+        .contact-info a {
+            color: var(--y3k-yellow);
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+        
+        .contact-info a:hover {
+            opacity: 0.8;
+        }
+        
+        .quote {
+            font-style: italic;
+            color: var(--y3k-gray-400);
+            margin-top: 32px;
+            font-size: 18px;
+            font-weight: 200;
+        }
+        
+        /* Print Button */
+        .print-button {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            background: var(--y3k-yellow);
+            color: var(--y3k-black);
+            border: none;
+            padding: 16px 40px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 400;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            font-family: 'IBM Plex Sans', sans-serif;
+        }
+        
+        .print-button:hover {
+            background: var(--y3k-white);
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive */
+        @media screen and (max-width: 768px) {
+            .page {
+                width: 100%;
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 48px;
+            }
+            
+            .overview-grid,
+            .assets-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button no-print" onclick="window.print()">Export PDF</button>
+    
+    <!-- Page 1: Overview & Timeline -->
+    <div class="page">
+        <div class="header">
+            <div class="logo-section">
+                <span class="logo">Y3K</span>
+                <span class="logo-x">×</span>
+                <span class="logo-partner">Panio</span>
+            </div>
+            <div style="text-align: right;">
+                <div class="tagline">Production Timeline</div>
+                <div class="tagline" style="margin-top: 4px;">August 2025</div>
+            </div>
+        </div>
+        
+        <h1>Your Canine<br><span style="color: var(--y3k-yellow);">Longevity Companion</span></h1>
+        <p class="subtitle">Premium Pet Health Brand Film</p>
+        
+        <div class="overview-card">
+            <div class="overview-grid">
+                <div class="overview-item">
+                    <span class="overview-label">Timeline</span>
+                    <span class="overview-value highlight">3 Weeks</span>
+                </div>
+                <div class="overview-item">
+                    <span class="overview-label">Production Period</span>
+                    <span class="overview-value">August 12-30, 2025</span>
+                </div>
+                <div class="overview-item">
+                    <span class="overview-label">Hero Deliverable</span>
+                    <span class="overview-value">45-Second Brand Film</span>
+                </div>
+                <div class="overview-item">
+                    <span class="overview-label">Total Assets</span>
+                    <span class="overview-value highlight">Complete Package</span>
+                </div>
+            </div>
+        </div>
+        
+        <h2>Production Schedule</h2>
+        
+        <div class="timeline-container">
+            <div class="week-card">
+                <div class="week-header">
+                    <div style="display: flex; align-items: center;">
+                        <div class="week-number">1</div>
+                        <h3 class="week-title">Discovery & Development</h3>
+                    </div>
+                    <span class="week-dates">Aug 12-16</span>
+                </div>
+                
+                <div class="milestone">
+                    <div class="milestone-header">
+                        <span class="milestone-date">Wednesday, August 14</span>
+                    </div>
+                    <div class="milestone-title">Creative Presentation</div>
+                    <ul class="deliverables">
+                        <li>Treatment deck presentation (1 hour)</li>
+                        <li>Script review and narrative flow</li>
+                        <li>Visual style confirmation</li>
+                        <li>Feedback and alignment session</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="week-card">
+                <div class="week-header">
+                    <div style="display: flex; align-items: center;">
+                        <div class="week-number">2</div>
+                        <h3 class="week-title">Production & Creation</h3>
+                    </div>
+                    <span class="week-dates">Aug 19-23</span>
+                </div>
+                
+                <div class="milestone">
+                    <div class="milestone-header">
+                        <span class="milestone-date">Thursday, August 22</span>
+                    </div>
+                    <div class="milestone-title">First Edit Review</div>
+                    <ul class="deliverables">
+                        <li>First cut of 45-second hero film</li>
+                        <li>Review call (30 minutes)</li>
+                        <li>Feedback discussion</li>
+                        <li>Refinement priorities</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="week-card">
+                <div class="week-header">
+                    <div style="display: flex; align-items: center;">
+                        <div class="week-number">3</div>
+                        <h3 class="week-title">Refinement & Delivery</h3>
+                    </div>
+                    <span class="week-dates">Aug 26-30</span>
+                </div>
+                
+                <div class="milestone">
+                    <div class="milestone-header">
+                        <span class="milestone-date">Tuesday, August 27</span>
+                    </div>
+                    <div class="milestone-title">Final Approval</div>
+                    <ul class="deliverables">
+                        <li>Refined version presentation</li>
+                        <li>Final adjustments</li>
+                        <li>Sign-off on hero film</li>
+                    </ul>
+                </div>
+                
+                <div class="milestone">
+                    <div class="milestone-header">
+                        <span class="milestone-date">Friday, August 30</span>
+                    </div>
+                    <div class="milestone-title">Complete Delivery</div>
+                    <ul class="deliverables">
+                        <li>All final assets delivered</li>
+                        <li>Launch-ready package</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Page 2: Deliverables & Process -->
+    <div class="page">
+        <div class="header">
+            <div class="logo-section">
+                <span class="logo">Y3K</span>
+                <span class="logo-x">×</span>
+                <span class="logo-partner">Panio</span>
+            </div>
+            <div style="text-align: right;">
+                <div class="tagline">Deliverables & Process</div>
+            </div>
+        </div>
+        
+        <h2>Complete Deliverables</h2>
+        
+        <div class="assets-grid">
+            <div class="asset-card">
+                <h4>Video Assets</h4>
+                <ul class="asset-list">
+                    <li>45-second hero brand film</li>
+                    <li>15-second social media cut</li>
+                    <li>16:9 landscape format</li>
+                    <li>9:16 vertical format</li>
+                    <li>1:1 square format</li>
+                </ul>
+            </div>
+            
+            <div class="asset-card">
+                <h4>Additional Materials</h4>
+                <ul class="asset-list">
+                    <li>Complete scene library</li>
+                    <li>Key marketing visuals</li>
+                    <li>Brand DNA document</li>
+                    <li>Usage guidelines</li>
+                    <li>Raw asset package</li>
+                </ul>
+            </div>
+        </div>
+        
+        <h2>Key Milestones</h2>
+        
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Milestone</th>
+                    <th>Your Time</th>
+                    <th>Deliverable</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="date-highlight">Aug 14</span></td>
+                    <td>Treatment Approval</td>
+                    <td>1 hour</td>
+                    <td>Approved creative direction</td>
+                </tr>
+                <tr>
+                    <td><span class="date-highlight">Aug 22</span></td>
+                    <td>First Edit Review</td>
+                    <td>30 minutes</td>
+                    <td>Feedback on first cut</td>
+                </tr>
+                <tr>
+                    <td><span class="date-highlight">Aug 27</span></td>
+                    <td>Final Approval</td>
+                    <td>30 minutes</td>
+                    <td>Sign-off on final version</td>
+                </tr>
+                <tr>
+                    <td><span class="date-highlight">Aug 30</span></td>
+                    <td>Delivery & Handoff</td>
+                    <td>15 minutes</td>
+                    <td>Complete asset package</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>What We Need From You</h2>
+        
+        <div class="requirements-box">
+            <ul class="requirements-list">
+                <li>Availability for scheduled review sessions</li>
+                <li>Feedback within 24 hours of each milestone</li>
+                <li>Final brand assets (logo files, specific fonts)</li>
+                <li>Confirmation on regulatory requirements</li>
+                <li>Clear point of contact for decisions</li>
+            </ul>
+        </div>
+        
+        <div class="commitment-section">
+            <h3>Our Commitment</h3>
+            <p>We're creating more than a video – we're crafting your company's first impression to the world.</p>
+            <ul class="commitment-list">
+                <li><strong>Emotionally connect</strong> with pet parents who see their dogs as family</li>
+                <li><strong>Establish credibility</strong> through your scientific innovation</li>
+                <li><strong>Drive action</strong> by showing the simple path to better pet health</li>
+                <li><strong>Set the tone</strong> for Panio as the luxury standard in pet longevity</li>
+            </ul>
+        </div>
+        
+        <div class="contact-footer">
+            <h3>Contact</h3>
+            <div class="contact-name">Gabriel F. Mihailesco</div>
+            <div class="contact-title">Creative Director, Y3K Agency</div>
+            <div class="contact-info">
+                <a href="mailto:gabriel@y3k.agency">gabriel@y3k.agency</a>
+            </div>
+            <div class="contact-info">+31 6 11 61 57 88</div>
+            <p class="quote">"Cinema at the speed of culture"</p>
+        </div>
+    </div>
+</body>
+</html>
